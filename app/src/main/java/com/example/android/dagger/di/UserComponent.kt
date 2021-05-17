@@ -2,14 +2,16 @@ package com.example.android.dagger.di
 
 import com.example.android.dagger.main.MainActivity
 import com.example.android.dagger.settings.SettingsActivity
+import com.example.android.dagger.user.LoggedUserScope
 import dagger.Subcomponent
 
+@LoggedUserScope
 @Subcomponent
-interface UserComponents {
+interface UserComponent {
 
     @Subcomponent.Factory
-    interface Factory{
-        fun create(): UserComponents
+    interface Factory {
+        fun create(): UserComponent
     }
 
     fun inject(activity: MainActivity)
