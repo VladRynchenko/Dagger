@@ -20,22 +20,22 @@ annotation class LoginStorage
 @Module
 class StorageModule {
 
+//    @Provides
+//    fun provideStorage(context: Context): Storage {
+//        // Whenever Dagger needs to provide an instance of type Storage,
+//        // this code (the one inside the @Provides method) will be run.
+//        return SharedPreferencesStorage(context)
+//    }
+
+    @RegistrationStorage
     @Provides
-    fun provideStorage(context: Context): Storage {
-        // Whenever Dagger needs to provide an instance of type Storage,
-        // this code (the one inside the @Provides method) will be run.
-        return SharedPreferencesStorage(context)
+    fun provideRegistrationStorage(context: Context): Storage {
+        return SharedPreferencesStorage("registration", context)
     }
 
-//    @RegistrationStorage
-//    @Provides
-//    fun provideRegistrationStorage(context: Context): Storage {
-//        return SharedPreferencesStorage("registration", context)
-//    }
-//
-//    @LoginStorage
-//    @Provides
-//    fun provideLoginStorage(context: Context): Storage {
-//        return SharedPreferencesStorage("login", context)
-//    }
+    @LoginStorage
+    @Provides
+    fun provideLoginStorage(context: Context): Storage {
+        return SharedPreferencesStorage("login", context)
+    }
 }

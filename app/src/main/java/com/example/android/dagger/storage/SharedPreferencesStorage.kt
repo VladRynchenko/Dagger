@@ -20,9 +20,9 @@ import android.content.Context
 import com.example.android.dagger.di.RegistrationStorage
 import javax.inject.Inject
 
-class SharedPreferencesStorage @Inject constructor( context: Context) : Storage {
+class SharedPreferencesStorage @Inject constructor(name: String, context: Context) : Storage {
 
-    private val sharedPreferences = context.getSharedPreferences("dagger", Context.MODE_PRIVATE)
+    private val sharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     override fun setString(key: String, value: String) {
         with(sharedPreferences.edit()) {
